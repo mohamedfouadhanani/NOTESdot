@@ -1,0 +1,9 @@
+{
+	"name": "eyeNote",
+	"short_name": "eyeNote",
+	"description": "Takes notes, save them locally and print them.",
+	"icons": [],
+	"start_url": "/",
+	"display": "fullscreen",
+	"orientation": "portrait"
+}
