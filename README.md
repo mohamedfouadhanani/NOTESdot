@@ -43,6 +43,7 @@ You can use the [following link](https://google.dz/) to start using the app.
     - [ ] **Layout**.
     - [ ] **Logic**.
     - [ ] **Local Save Logic**.
+  - [ ] **Preview Page**
 - [ ] Establish Meta data.
 - [ ] Test.
 - [ ] Choose a **Licence**.
@@ -52,7 +53,13 @@ You can use the [following link](https://google.dz/) to start using the app.
 
 ##### Light Theme
 
+[Home Page Image](./screenshots/LightTheme/Home Page.png)
+[Input Page Image](./screenshots/LightTheme/Input Page.png)
+
 ##### Dark Theme
+
+[Home Page Image](./screenshots/DarkTheme/Home Page.png)
+[Input Page Image](./screenshots/DarkTheme/Input Page.png)
 
 ### How to Start?
 
