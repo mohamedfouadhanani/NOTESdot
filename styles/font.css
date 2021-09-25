@@ -1,0 +1,26 @@
+@font-face {
+	font-family: RozhaOne-Regular;
+	src: url('/fonts/RozhaOne-Regular.ttf');
+}
+
+@font-face {
+	font-family: Montserrat-Light;
+	src: url('/fonts/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url('/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+.RozhaOne {
+	font-family: RozhaOne-Regular;
+}
+
+.Montserrat-Light {
+	font-family: Montserrat-Light;
+}
+
+.Montserrat-Regular {
+	font-family: Montserrat-Regular;
+}

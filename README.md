@@ -1,22 +1,21 @@
-# TakeNotes
+# NOTES.
 
 ### Introduction
 
-Want to write notes, save them **locally**, print them as **PDF**, **_TakeNotes_** is the one for you.
+Want to write notes, save them **locally**, print them as **PDF**, **_NOTES._** is the one for you.
 
 ### Use Cases
 
-- [ ] Create a new note.
-- [ ] Open an existing note.
-- [ ] Save a note locally.
-- [ ] Export a note as PDF.
-- [ ] Preview.
-- [ ] Delete a note.
-- [ ] Display installation button.
+- [x] Create a new note.
+- [x] Open an existing note.
+- [x] Save a note locally.
+- [x] Export a note as PDF.
+- [x] Delete a note.
+- [x] Display installation button.
 
 ### Demo
 
-You can use the [following link](https://google.dz/) to start using the app.
+You can use the [following link]() to start using the app.
 
 ### Tech Stack
 
@@ -37,13 +36,11 @@ You can use the [following link](https://google.dz/) to start using the app.
     - [ ] Meta
   - [x] Setup a **Github Repository**.
 - [ ] Work on
-  - [ ] **Index / Create-Open** Page.
-  - [ ] **About** Page.
-  - [ ] **Writing Page**.
-    - [ ] **Layout**.
-    - [ ] **Logic**.
-    - [ ] **Local Save Logic**.
-  - [ ] **Preview Page**
+  - [x] **Index / Create-Open** Page.
+  - [x] **Writing Page**.
+    - [x] **Layout**.
+    - [x] **Logic**.
+    - [x] **Local Save Logic**.
 - [ ] Establish Meta data.
 - [ ] Test.
 - [ ] Choose a **Licence**.

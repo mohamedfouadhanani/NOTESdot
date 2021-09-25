@@ -1,41 +1,47 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import Head from 'next/head';
 
-type Props = {
-  children?: ReactNode
-  title?: string
+// CONTEXTS
+import { useSettings } from '../contexts/Settings';
+
+// COMPONENTS
+import Footer from './Footer';
+import NavBar from './Navbar/Index';
+
+function Layout({ children, full }: any) {
+	let { settings }: any = useSettings();
+	let { isDarkTheme } = settings;
+
+	return (
+		<>
+			<Head>
+				<meta charSet="utf-8" />
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="author" content="@its_fouad_hanani" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link
+					rel="shortcut icon"
+					href="/icons/NOTES. NO BORDER.svg"
+					type="image/svg+xml"
+				/>
+				<link
+					rel="apple-touch-icon"
+					href="/icons/NOTES. NO BORDER.svg"
+					type="image/svg+xml"
+				/>
+			</Head>
+			<div
+				className={`${
+					isDarkTheme ? 'text-gray-50 bg-gray-900' : 'text-gray-900 bg-white'
+				} min-h-screen ${
+					full ? 'flex flex-col justify-between' : ''
+				} selection:bg-violet-600 selection:text-gray-50`}
+			>
+				{full && <NavBar />}
+				{children}
+				{full && <Footer />}
+			</div>
+		</>
+	);
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
-
-export default Layout
+export default Layout;

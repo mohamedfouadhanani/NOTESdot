@@ -1,17 +1,16 @@
-const withPWA = require('next-pwa');
+const { gray, violet } = require('tailwindcss/colors');
 
-module.exports = withPWA({
+module.exports = {
 	mode: 'jit',
 	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
 	darkMode: false,
 	theme: {
-		extend: {},
+		extend: {
+			colors: { gray, violet },
+		},
 	},
 	variants: {
 		extend: {},
 	},
 	plugins: [],
-	pwa: {
-		dest: 'public',
-	},
-});
+};

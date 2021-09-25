@@ -8,10 +8,17 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
+    "@heroicons/react": "^1.0.4",
+    "@react-pdf/renderer": "^2.0.19",
+    "@tiptap/extension-underline": "^2.0.0-beta.16",
+    "@tiptap/react": "^2.0.0-beta.66",
+    "@tiptap/starter-kit": "^2.0.0-beta.104",
     "next": "latest",
     "next-pwa": "^5.3.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-bootstrap-icons": "^1.5.0",
+    "react-dom": "^17.0.2",
+    "remixicon-react": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",

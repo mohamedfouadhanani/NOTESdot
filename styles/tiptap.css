@@ -1,0 +1,50 @@
+h1,
+h2,
+h3 {
+	@apply font-bold mb-2;
+}
+
+h1 {
+	@apply text-4xl;
+}
+
+h2 {
+	@apply text-2xl;
+}
+
+h3 {
+	@apply text-xl;
+}
+
+p {
+	@apply mb-2;
+}
+
+ul,
+ol {
+	@apply ml-10;
+}
+
+ul {
+	@apply list-disc;
+}
+
+ol {
+	@apply list-decimal;
+}
+
+code {
+	@apply p-2 bg-gray-800 text-white rounded-md block mb-4;
+}
+
+blockquote {
+	@apply border-l-4 border-gray-400 p-2 bg-gray-100 block text-gray-600 mb-4;
+}
+
+blockquote > * {
+	@apply mb-0;
+}
+
+.ProseMirror:focus {
+	@apply outline-none;
+}
