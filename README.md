@@ -44,19 +44,13 @@ You can use the [following link]() to start using the app.
 - [x] Establish Meta data.
 - [x] Test.
 - [ ] Choose a **Licence**.
-- [ ] Deploy.
+- [x] Deploy.
 
 ### Screenshots
 
 ##### Light Theme
 
-[Home Page Image](./screenshots/LightTheme/Home Page.png)
-[Input Page Image](./screenshots/LightTheme/Input Page.png)
-
 ##### Dark Theme
-
-[Home Page Image](./screenshots/DarkTheme/Home Page.png)
-[Input Page Image](./screenshots/DarkTheme/Input Page.png)
 
 ### How to Start?
 
@@ -69,4 +63,6 @@ For the fellow **developers**, if you want to **create your own** versions of th
 
 ### Licence
 
-This project is under the **_LICENCE HERE_ licence**.
+You are free to use this code as inspiration, crediting the author is appreciated, no commercial use please.
+
+No confusing license. Be kind and help others learn.
