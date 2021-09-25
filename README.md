@@ -43,7 +43,7 @@ You can use the [following link]() to start using the app.
     - [x] **Local Save Logic**.
 - [x] Establish Meta data.
 - [x] Test.
-- [ ] Choose a **Licence**.
+- [x] Choose a **Licence**.
 - [x] Deploy.
 
 ### Screenshots
