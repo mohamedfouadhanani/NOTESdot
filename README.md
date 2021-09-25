@@ -25,24 +25,24 @@ You can use the [following link]() to start using the app.
 
 ### Roadmap
 
-- [ ] Setup App
+- [x] Setup App
   - [x] Setup **TailwindCSS**.
   - [x] Setup **Google Analytics**.
     - [x] Setup Source Code
     - [x] Setup Google Analytics Tracking ID
-  - [ ] Setup as **PWA** (Progressive Web App).
+  - [x] Setup as **PWA** (Progressive Web App).
     - [x] Next-PWA.
-    - [ ] Manifest.json
-    - [ ] Meta
+    - [x] Manifest.json
+    - [x] Meta
   - [x] Setup a **Github Repository**.
-- [ ] Work on
+- [x] Work on
   - [x] **Index / Create-Open** Page.
   - [x] **Writing Page**.
     - [x] **Layout**.
     - [x] **Logic**.
     - [x] **Local Save Logic**.
-- [ ] Establish Meta data.
-- [ ] Test.
+- [x] Establish Meta data.
+- [x] Test.
 - [ ] Choose a **Licence**.
 - [ ] Deploy.
 

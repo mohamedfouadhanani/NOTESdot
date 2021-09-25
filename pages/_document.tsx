@@ -10,7 +10,14 @@ export default class MyDocument extends Document {
 					<meta charSet="utf-8" />
 					<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 					<meta name="author" content="@its_fouad_hanani" />
+
 					<link rel="manifest" href="/manifest.json" />
+					<link
+						rel="shortcut icon"
+						href="/icons/NOTES..svg"
+						type="image/svg+xml"
+					/>
+					<link rel="apple-touch-icon" href="/icons/NOTES..svg" />
 
 					{process.env.NODE_ENV !== 'development' && (
 						<>

@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+.env.local
+
 # next.js
 /.next/
 /out/
@@ -32,3 +34,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# pwa
+**/public/workbox-*.js
+**/public/workbox-*.js.map
+**/public/sw.js
+**/public/sw.js.map
+**/public/fallback-*.js

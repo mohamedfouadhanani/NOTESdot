@@ -1,9 +1,20 @@
 {
-	"name": "eyeNote",
-	"short_name": "eyeNote",
-	"description": "Takes notes, save them locally and print them.",
-	"icons": [],
+	"short_name": "NOTES.",
+	"name": "NOTES.",
+	"description": "Online and local note taking app that is installable on your machine.",
 	"start_url": "/",
 	"display": "fullscreen",
-	"orientation": "portrait"
+	"orientation": "portrait",
+	"icons": [
+		{
+			"src": "/icons/NOTES.192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/icons/NOTES.512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
 }
