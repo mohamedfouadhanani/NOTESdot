@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import {
 	Page,
@@ -13,6 +13,7 @@ import {
 import Container from '../components/Container';
 import CustomInput from '../components/CustomInput';
 import Layout from '../components/Layout';
+import Alert from '../components/Alert';
 
 let Editor = dynamic(import('../components/Editor/Index'), {
 	ssr: false,
@@ -25,18 +26,24 @@ import { getLocalNote, setLocalNote } from '../utils/note';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Button from '../components/Button';
-import { noteFileExtenstion } from '../constants';
+import { LANGUAGE, noteFileExtenstion } from '../constants';
 import {
 	DocumentTextIcon,
 	DownloadIcon,
 	TrashIcon,
 } from '@heroicons/react/solid';
 
+// TYPE
+import TypeAlert, { EAlertType } from '../interfaces/Alert';
+
 function note() {
 	let { note, setNote } = useNote();
 	let { settings } = useSettings();
 	let { isDarkTheme } = settings;
 	let router = useRouter();
+
+	// ALERTS
+	let [alerts, setAlerts] = useState<TypeAlert[]>([]);
 
 	if (note === null) {
 		router.push('/');
@@ -60,6 +67,12 @@ function note() {
 
 			document.body.appendChild(element);
 			element.click();
+		} else {
+			alerts.push({
+				type: EAlertType.ERROR,
+				message: LANGUAGE[settings.language].note.emptyTitleErrorLocally,
+			});
+			setAlerts([...alerts]);
 		}
 	};
 
@@ -103,7 +116,13 @@ function note() {
 
 			document.body.appendChild(element);
 			element.click();
+		} else {
+			alerts.push({
+				type: EAlertType.ERROR,
+				message: LANGUAGE[settings.language].note.emptyTitleErrorPDF,
+			});
 		}
+		setAlerts(alerts);
 	};
 
 	return (
@@ -113,6 +132,24 @@ function note() {
 			</Head>
 			<Layout full={true}>
 				<Container className="px-4 py-4 mx-0 sm:mx-auto sm:px-0 sm:w-9/12 md:w-8/12 flex-1 flex flex-col space-y-8">
+					{alerts && alerts.length !== 0 && (
+						<div className="space-y-2">
+							{alerts.map((alert, idx) => {
+								return (
+									<Alert
+										onClose={() => {
+											alerts.splice(idx, 1);
+											let alertsFiltered = alerts;
+											setAlerts([...alertsFiltered]);
+										}}
+										type={alert.type}
+										message={alert.message}
+										key={idx}
+									/>
+								);
+							})}
+						</div>
+					)}
 					<CustomInput
 						id="title"
 						value={note.title}
@@ -124,11 +161,11 @@ function note() {
 							});
 						}}
 						label=""
-						error={settings.language.note.error}
+						error={LANGUAGE[settings.language].note.error}
 						labelClassName=""
 						inputClassName=""
 						errorClassName=""
-						placeholder={settings.language.note.placeholder}
+						placeholder={LANGUAGE[settings.language].note.placeholder}
 						validationFunction={(title: string, setIsValid) => {
 							if (title && title !== '') {
 								setIsValid(title.length > 5);
@@ -148,7 +185,7 @@ function note() {
 							} flex justify-center items-center space-x-2 w-auto border-2 font-bold`}
 						>
 							<DownloadIcon height={25} />
-							<span>Save Locally</span>
+							<span>{LANGUAGE[settings.language].note.saveLocally}</span>
 						</Button>
 						<Button
 							onClick={() => {
@@ -174,7 +211,7 @@ function note() {
 							} flex items-center justify-center space-x-2 w-auto font-bold`}
 						>
 							<DocumentTextIcon height={25} />
-							<span>Save as PDF</span>
+							<span>{LANGUAGE[settings.language].note.saveAsPDF}</span>
 						</Button>
 					</div>
 				</Container>

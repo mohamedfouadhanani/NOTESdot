@@ -5,7 +5,7 @@ interface ILanguageInstance {
 }
 
 export const LANGUAGE: ILanguageInstance = {
-	english: {
+	ENGLISH: {
 		name: 'English',
 		navbar: {
 			changeLanguage: 'Change the Language',
@@ -31,9 +31,14 @@ export const LANGUAGE: ILanguageInstance = {
 		note: {
 			error: 'The title must be at least 6 characters',
 			placeholder: 'Title',
+			emptyTitleErrorLocally:
+				'Cannot save the note with an empty title locally.',
+			emptyTitleErrorPDF: 'Cannot save the note with an empty title as PDF.',
+			saveLocally: 'Save Locally',
+			saveAsPDF: 'Save as PDF',
 		},
 	},
-	français: {
+	FRANCAIS: {
 		name: 'Français',
 		navbar: {
 			changeLanguage: 'Changer la Langue',
@@ -59,9 +64,15 @@ export const LANGUAGE: ILanguageInstance = {
 		note: {
 			error: 'Le titre doit comporter au moins 6 caractères',
 			placeholder: 'Titre',
+			emptyTitleErrorLocally:
+				"Impossible d'enregistrer la note avec un titre vide localement.",
+			emptyTitleErrorPDF:
+				"Impossible d'enregistrer la note avec un titre vide au format PDF.",
+			saveLocally: 'Enregistrer localement',
+			saveAsPDF: 'Enregistrer en PDF',
 		},
 	},
-	español: {
+	ESPANOL: {
 		name: 'Español',
 		navbar: {
 			changeLanguage: 'Cambiar el idioma',
@@ -87,6 +98,12 @@ export const LANGUAGE: ILanguageInstance = {
 		note: {
 			error: 'El título debe tener al menos 6 caracteres.',
 			placeholder: 'Título',
+			emptyTitleErrorLocally:
+				'No se puede guardar la nota con un título vacío localmente.',
+			emptyTitleErrorPDF:
+				'No se puede guardar la nota con un título vacío como PDF.',
+			saveLocally: 'Guardar localmente',
+			saveAsPDF: 'Guardar como PDF',
 		},
 	},
 };

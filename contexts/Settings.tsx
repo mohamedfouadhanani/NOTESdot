@@ -5,8 +5,7 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { getLocalSettings, ISettings } from '../utils/settings';
-import { LANGUAGE } from '../constants';
+import { ELanguage, getLocalSettings, ISettings } from '../utils/settings';
 
 export const SettingsContext = createContext(null);
 
@@ -22,7 +21,7 @@ function SettingsProvider({ children }) {
 
 	let OSTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	let defaultSettings: ISettings = {
-		language: LANGUAGE.english,
+		language: ELanguage.ENGLISH,
 		isDarkTheme: OSTheme,
 	};
 

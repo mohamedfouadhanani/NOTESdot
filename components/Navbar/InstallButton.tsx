@@ -1,4 +1,5 @@
 import { PlusCircleIcon } from '@heroicons/react/solid';
+import { LANGUAGE } from '../../constants';
 import { useSettings } from '../../contexts/Settings';
 
 function InstallButton() {
@@ -10,7 +11,7 @@ function InstallButton() {
 		>
 			<PlusCircleIcon height={30} />
 			<span className="Montserrat-Regular">
-				{settings.language.navbar.install}
+				{LANGUAGE[settings.language].navbar.install}
 			</span>
 		</button>
 	);

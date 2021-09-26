@@ -24,11 +24,21 @@ export interface ILanguage {
 	note?: {
 		error: string;
 		placeholder: string;
+		emptyTitleErrorLocally: string;
+		emptyTitleErrorPDF: string;
+		saveLocally: string;
+		saveAsPDF: string;
 	};
 }
 
+export enum ELanguage {
+	ENGLISH = 'ENGLISH',
+	FRANCAIS = 'FRANCAIS',
+	ESPANOL = 'ESPANOL',
+}
+
 export interface ISettings {
-	language: ILanguage;
+	language: ELanguage;
 	isDarkTheme: boolean;
 }
 

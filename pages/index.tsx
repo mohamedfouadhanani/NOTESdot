@@ -8,7 +8,7 @@ import Head from 'next/head';
 import { useSettings } from '../contexts/Settings';
 import { getLocalNote, setLocalNote } from '../utils/note';
 import { useNote } from '../contexts/Note';
-import { noteFileExtenstion } from '../constants';
+import { LANGUAGE, noteFileExtenstion } from '../constants';
 
 function Home() {
 	let { settings } = useSettings();
@@ -65,9 +65,9 @@ function Home() {
 					<Container className="px-4 py-4 sm:mx-auto sm:px-0 sm:w-9/12 md:w-8/12">
 						<div className="space-y-4">
 							<h1 className="font-bold text-4xl">
-								<span>{settings.language.index.h1}</span>
+								<span>{LANGUAGE[settings.language].index.h1}</span>
 							</h1>
-							<p className="text-lg">{settings.language.index.h2}</p>
+							<p className="text-lg">{LANGUAGE[settings.language].index.h2}</p>
 							<div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 sm:justify-center sm:items-center">
 								<Button
 									onClick={() => {
@@ -89,14 +89,14 @@ function Home() {
 											: 'bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-gray-50'
 									}`}
 								>
-									{settings.language.index.create}
+									{LANGUAGE[settings.language].index.create}
 								</Button>
 
 								<Button
 									onClick={() => trigger()}
 									className="bg-violet-600 hover:bg-violet-500 active:bg-violet-700 text-gray-50 hover:text-gray-100 active:text-gray-200"
 								>
-									<span>{settings.language.index.open}</span>
+									<span>{LANGUAGE[settings.language].index.open}</span>
 								</Button>
 								<input
 									type="file"

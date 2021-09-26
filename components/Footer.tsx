@@ -7,6 +7,7 @@ import { useSettings } from '../contexts/Settings';
 // COMPONENTS
 import Container from './Container';
 import CustomLink from './Link';
+import { LANGUAGE } from '../constants';
 
 function Footer() {
 	let year = new Date().getFullYear();
@@ -19,20 +20,20 @@ function Footer() {
 					<span className="font-bold">
 						&copy; {year} Mohamed Fouad HANANI.{' '}
 					</span>
-					<span>{settings.language.footer.allRightsReserved}</span>
+					<span>{LANGUAGE[settings.language].footer.allRightsReserved}</span>
 				</div>
 				<div className="flex flex-col space-y-1 md:space-x-2 md:space-y-0 md:flex-row md:justify-center">
 					<CustomLink
 						target="_blank"
 						className=""
 						href="/terms-and-conditions"
-						value={settings.language.footer.terms}
+						value={LANGUAGE[settings.language].footer.terms}
 					/>
 					<CustomLink
 						target="_blank"
 						className=""
 						href="/privacy-policy"
-						value={settings.language.footer.privacy}
+						value={LANGUAGE[settings.language].footer.privacy}
 					/>
 				</div>
 			</Container>

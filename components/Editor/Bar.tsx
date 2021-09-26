@@ -78,7 +78,7 @@ let Bar = ({ editor }) => {
 						icon={<StrikeThroughIcon />}
 					/>
 				</ButtonGroup>
-				<ButtonGroup>
+				<ButtonGroup className="space-x-1">
 					<Button
 						onClick={() => editor.chain().focus().toggleBulletList().run()}
 						isActive={editor.isActive('bulletList')}
@@ -88,6 +88,16 @@ let Bar = ({ editor }) => {
 						onClick={() => editor.chain().focus().toggleOrderedList().run()}
 						isActive={editor.isActive('orderedList')}
 						icon={<ListOrderedIcon />}
+					/>
+					<Button
+						onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+						isActive={editor.isActive('codeBlock')}
+						icon={<TerminalLineIcon />}
+					/>
+					<Button
+						onClick={() => editor.chain().focus().toggleBlockquote().run()}
+						isActive={editor.isActive('blockquote')}
+						icon={<DoubleQuotesRIcon />}
 					/>
 					<Button
 						onClick={() => editor.chain().focus().undo().run()}

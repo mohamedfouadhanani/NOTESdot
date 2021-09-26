@@ -1,47 +1,47 @@
-h1,
-h2,
-h3 {
+.ProseMirror > h1,
+.ProseMirror > h2,
+.ProseMirror > h3 {
 	@apply font-bold mb-2;
 }
 
-h1 {
+.ProseMirror > h1 {
 	@apply text-4xl;
 }
 
-h2 {
+.ProseMirror > h2 {
 	@apply text-2xl;
 }
 
-h3 {
+.ProseMirror > h3 {
 	@apply text-xl;
 }
 
-p {
+.ProseMirror > p {
 	@apply mb-2;
 }
 
-ul,
-ol {
+.ProseMirror > ul,
+.ProseMirror > ol {
 	@apply ml-10;
 }
 
-ul {
+.ProseMirror > ul {
 	@apply list-disc;
 }
 
-ol {
+.ProseMirror > ol {
 	@apply list-decimal;
 }
 
-code {
+.ProseMirror > pre > code {
 	@apply p-2 bg-gray-800 text-white rounded-md block mb-4;
 }
 
-blockquote {
+.ProseMirror > blockquote {
 	@apply border-l-4 border-gray-400 p-2 bg-gray-100 block text-gray-600 mb-4;
 }
 
-blockquote > * {
+.ProseMirror > blockquote > * {
 	@apply mb-0;
 }
 

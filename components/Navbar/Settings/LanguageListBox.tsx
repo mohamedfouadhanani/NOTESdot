@@ -3,14 +3,14 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckCircleIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { useSettings } from '../../../contexts/Settings';
 import { LANGUAGE } from '../../../constants';
-import { setLocalSettings } from '../../../utils/settings';
+import { ELanguage, setLocalSettings } from '../../../utils/settings';
 
 function LanguageListBox() {
 	let { settings, setSettings } = useSettings();
 	let { isDarkTheme, language } = settings;
-	const [selected, setSelected] = useState(
-		LANGUAGE[language.name.toLowerCase()]
-	);
+	let [selected, setSelected] = useState(language);
+
+	let LANGUGES = Object.keys(ELanguage);
 
 	useEffect(() => {
 		setSettings({ ...settings, language: selected });
@@ -25,7 +25,9 @@ function LanguageListBox() {
 						isDarkTheme ? 'ring-gray-700 bg-gray-900' : 'ring-gray-200 bg-white'
 					} relative w-full py-2 pl-3 pr-10 text-left rounded cursor-pointer outline-none ring-1`}
 				>
-					<span className="block truncate">{selected.name}</span>
+					<span className="block truncate">
+						{selected[0] + selected.substring(1).toLowerCase()}
+					</span>
 					<span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
 						<ChevronDownIcon
 							className="w-5 h-5 text-gray-400"
@@ -46,7 +48,7 @@ function LanguageListBox() {
 								: 'ring-gray-200 bg-white'
 						} z-[1000] absolute w-full py-1 mt-1 overflow-auto text-base rounded shadow max-h-60 outline-none ring-1`}
 					>
-						{Object.values(LANGUAGE).map((language, languageIdx) => (
+						{LANGUGES.map((language, languageIdx) => (
 							<Listbox.Option
 								key={languageIdx}
 								className={({ active }) =>
@@ -69,7 +71,7 @@ function LanguageListBox() {
 												selected ? 'font-bold' : 'font-normal'
 											} block truncate`}
 										>
-											{language.name}
+											{language[0] + language.substring(1).toLowerCase()}
 										</span>
 										{selected ? (
 											<span

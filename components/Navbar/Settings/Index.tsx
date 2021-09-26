@@ -1,5 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { LANGUAGE } from '../../../constants';
 import { useSettings } from '../../../contexts/Settings';
 import { setLocalSettings } from '../../../utils/settings';
 
@@ -36,11 +37,11 @@ export default function Settings() {
 							: 'bg-white ring-gray-200'
 					} absolute right-0 w-52 mt-2 origin-top-right rounded-md shadow-lg ring-1 outline-none p-4 space-y-4 !z-[1000]`}
 				>
-					<MenuItem title={settings.language.navbar.changeLanguage}>
+					<MenuItem title={LANGUAGE[settings.language].navbar.changeLanguage}>
 						<LanguageListBox />
 					</MenuItem>
 
-					<MenuItem title={settings.language.navbar.switchTheme}>
+					<MenuItem title={LANGUAGE[settings.language].navbar.switchTheme}>
 						<CustomSwitch
 							enabled={isDarkTheme}
 							setEnabled={(value: any) => {
