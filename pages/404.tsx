@@ -1,10 +1,15 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+
+// COMPONENTS
 import Button from '../components/Button';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
-import { LANGUAGE } from '../constants';
+
+// CONTEXTS
 import { useSettings } from '../contexts/Settings';
+
+// CONSTANTS
+import { LANGUAGE } from '../constants';
 
 function NotFound() {
 	let router = useRouter();

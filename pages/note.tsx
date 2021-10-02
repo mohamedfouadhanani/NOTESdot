@@ -42,6 +42,11 @@ function note() {
 	let { isDarkTheme } = settings;
 	let router = useRouter();
 
+	console.log('settings.language');
+	console.log(settings.language);
+	console.log('LANGUAGE[settings.language]');
+	console.log(LANGUAGE[settings.language]);
+
 	// ALERTS
 	let [alerts, setAlerts] = useState<TypeAlert[]>([]);
 
@@ -122,7 +127,7 @@ function note() {
 				message: LANGUAGE[settings.language].note.emptyTitleErrorPDF,
 			});
 		}
-		setAlerts(alerts);
+		setAlerts([...alerts]);
 	};
 
 	return (
