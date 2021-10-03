@@ -42,11 +42,6 @@ function note() {
 	let { isDarkTheme } = settings;
 	let router = useRouter();
 
-	console.log('settings.language');
-	console.log(settings.language);
-	console.log('LANGUAGE[settings.language]');
-	console.log(LANGUAGE[settings.language]);
-
 	// ALERTS
 	let [alerts, setAlerts] = useState<TypeAlert[]>([]);
 
@@ -130,6 +125,15 @@ function note() {
 		setAlerts([...alerts]);
 	};
 
+	let [title, setTitle] = useState(note.title);
+	let [body, setBody] = useState(note.body);
+
+	useEffect(() => {
+		let modifiedNote = { title, body, createdAt: note.createdAt };
+
+		setNote(modifiedNote);
+	}, [title, body]);
+
 	return (
 		<>
 			<Head>
@@ -157,13 +161,9 @@ function note() {
 					)}
 					<CustomInput
 						id="title"
-						value={note.title}
+						value={title}
 						onChange={e => {
-							setNote({
-								title: e.target.value,
-								createdAt: note.createdAt,
-								body: note.body,
-							});
+							setTitle(e.target.value);
 						}}
 						label=""
 						error={LANGUAGE[settings.language].note.error}
@@ -179,7 +179,12 @@ function note() {
 							}
 						}}
 					/>
-					<Editor onUpdate={html => setNote({ ...note, body: html })} />
+					<Editor
+						content={body}
+						onUpdate={html => {
+							setBody(html);
+						}}
+					/>
 					<div className="flex flex-col space-y-2 text-sm md:flex-row md:space-y-0 md:space-x-2 md:justify-end">
 						<Button
 							onClick={saveNoteLocally}

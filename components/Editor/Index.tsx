@@ -9,12 +9,12 @@ import { useNote } from '../../contexts/Note';
 import Bar from './Bar';
 import Editor from './Editor';
 
-let Index = ({ onUpdate }) => {
+let Index = ({ onUpdate, content }) => {
 	let { note } = useNote();
 
 	const editor = useEditor({
 		extensions: [StarterKit, UnderlineExtention],
-		content: note.body,
+		content,
 		onUpdate: ({ editor }) => onUpdate(editor.getHTML()),
 	});
 
