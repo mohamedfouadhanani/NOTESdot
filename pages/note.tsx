@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import {
 	Page,
@@ -8,6 +8,7 @@ import {
 	StyleSheet,
 	pdf,
 } from '@react-pdf/renderer';
+import Html from 'react-pdf-html';
 
 // COMPONENTS
 import Container from '../components/Container';
@@ -41,6 +42,9 @@ function note() {
 	let { settings } = useSettings();
 	let { isDarkTheme } = settings;
 	let router = useRouter();
+
+	// REF
+	let pdfRef = useRef(null);
 
 	// ALERTS
 	let [alerts, setAlerts] = useState<TypeAlert[]>([]);
@@ -82,17 +86,14 @@ function note() {
 			let styles = StyleSheet.create({
 				page: {
 					backgroundColor: '#E4E4E4',
+					padding: 20,
+					margin: 0,
 				},
 				section: {
-					margin: 0,
-					padding: 20,
 					fontSize: 12,
 				},
 				title: {
-					margin: 0,
-					padding: 20,
-					marginTop: 0,
-					fontSize: 25,
+					fontSize: 35,
 					fontWeight: 'bold',
 				},
 			});
@@ -103,9 +104,7 @@ function note() {
 						<View style={styles.title}>
 							<Text>{note.title}</Text>
 						</View>
-						<View style={styles.section}>
-							<Text>{note.body}</Text>
-						</View>
+						<Html style={styles.section}>{note.body}</Html>
 					</Page>
 				</Document>
 			).toBlob();
@@ -224,6 +223,10 @@ function note() {
 							<span>{LANGUAGE[settings.language].note.saveAsPDF}</span>
 						</Button>
 					</div>
+					{/* <div ref={pdfRef}>
+						<h1 className="font-bold text-6xl mb-8">{note.title}</h1>
+						<div dangerouslySetInnerHTML={{ __html: note.body }} />
+					</div> */}
 				</Container>
 			</Layout>
 		</>
