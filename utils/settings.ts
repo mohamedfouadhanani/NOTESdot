@@ -24,10 +24,9 @@ export interface ILanguage {
 	note?: {
 		error: string;
 		placeholder: string;
-		emptyTitleErrorLocally: string;
-		emptyTitleErrorPDF: string;
+		emptyTitle: string;
 		saveLocally: string;
-		saveAsPDF: string;
+		preview: string;
 	};
 }
 

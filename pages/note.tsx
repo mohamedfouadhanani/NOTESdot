@@ -1,20 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import {
-	Page,
-	Text,
-	View,
-	Document,
-	StyleSheet,
-	pdf,
-} from '@react-pdf/renderer';
-import Html from 'react-pdf-html';
+import dynamic from 'next/dynamic';
+import { DownloadIcon, TrashIcon, EyeIcon } from '@heroicons/react/solid';
 
 // COMPONENTS
 import Container from '../components/Container';
 import CustomInput from '../components/CustomInput';
 import Layout from '../components/Layout';
 import Alert from '../components/Alert';
+import Button from '../components/Button';
 
 let Editor = dynamic(import('../components/Editor/Index'), {
 	ssr: false,
@@ -23,18 +17,15 @@ let Editor = dynamic(import('../components/Editor/Index'), {
 // CONTEXTS
 import { useSettings } from '../contexts/Settings';
 import { useNote } from '../contexts/Note';
-import { getLocalNote, setLocalNote } from '../utils/note';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-import Button from '../components/Button';
-import { LANGUAGE, noteFileExtenstion } from '../constants';
-import {
-	DocumentTextIcon,
-	DownloadIcon,
-	TrashIcon,
-} from '@heroicons/react/solid';
 
-// TYPE
+// CONSTANTS
+import { LANGUAGE, noteFileExtenstion } from '../constants';
+
+// UTILS
+import { getLocalNote, setLocalNote } from '../utils/note';
+
+// TYPES
 import TypeAlert, { EAlertType } from '../interfaces/Alert';
 
 function note() {
@@ -43,8 +34,14 @@ function note() {
 	let { isDarkTheme } = settings;
 	let router = useRouter();
 
-	// REF
-	let pdfRef = useRef(null);
+	let [title, setTitle] = useState(note.title);
+	let [body, setBody] = useState(note.body);
+
+	useEffect(() => {
+		let modifiedNote = { title, body, createdAt: note.createdAt };
+
+		setNote(modifiedNote);
+	}, [title, body]);
 
 	// ALERTS
 	let [alerts, setAlerts] = useState<TypeAlert[]>([]);
@@ -74,64 +71,11 @@ function note() {
 		} else {
 			alerts.push({
 				type: EAlertType.ERROR,
-				message: LANGUAGE[settings.language].note.emptyTitleErrorLocally,
+				message: LANGUAGE[settings.language].note.emptyTitle,
 			});
 			setAlerts([...alerts]);
 		}
 	};
-
-	let saveNoteAsPDF = async () => {
-		let note = getLocalNote();
-		if (note.title !== '') {
-			let styles = StyleSheet.create({
-				page: {
-					backgroundColor: '#E4E4E4',
-					padding: 20,
-					margin: 0,
-				},
-				section: {
-					fontSize: 12,
-				},
-				title: {
-					fontSize: 35,
-					fontWeight: 'bold',
-				},
-			});
-
-			let PDFDocumentBlob = await pdf(
-				<Document>
-					<Page size="A4" style={styles.page}>
-						<View style={styles.title}>
-							<Text>{note.title}</Text>
-						</View>
-						<Html style={styles.section}>{note.body}</Html>
-					</Page>
-				</Document>
-			).toBlob();
-
-			let element = document.createElement('a');
-			element.href = URL.createObjectURL(PDFDocumentBlob);
-			element.download = `${note.title}.pdf`;
-
-			document.body.appendChild(element);
-			element.click();
-		} else {
-			alerts.push({
-				type: EAlertType.ERROR,
-				message: LANGUAGE[settings.language].note.emptyTitleErrorPDF,
-			});
-		}
-		setAlerts([...alerts]);
-	};
-
-	let [title, setTitle] = useState(note.title);
-	let [body, setBody] = useState(note.body);
-
-	useEffect(() => {
-		let modifiedNote = { title, body, createdAt: note.createdAt };
-
-		setNote(modifiedNote);
-	}, [title, body]);
 
 	return (
 		<>
@@ -212,21 +156,27 @@ function note() {
 							<span className="block sm:hidden">Delete Note</span>
 						</Button>
 						<Button
-							onClick={saveNoteAsPDF}
+							onClick={() => {
+								if (note.title !== '') {
+									router.push('/preview');
+								} else {
+									alerts.push({
+										type: EAlertType.ERROR,
+										message: LANGUAGE[settings.language].note.emptyTitle,
+									});
+									setAlerts([...alerts]);
+								}
+							}}
 							className={`${
 								isDarkTheme
 									? 'bg-violet-600 hover:bg-violet-500 active:bg-violet-700 text-gray-200 hover:text-gray-100 active:text-gray-300'
 									: 'bg-gray-900 hover:bg-gray-700 active:bg-gray-800 text-gray-50 hover:text-white active:text-gray-100'
 							} flex items-center justify-center space-x-2 w-auto font-bold`}
 						>
-							<DocumentTextIcon height={25} />
-							<span>{LANGUAGE[settings.language].note.saveAsPDF}</span>
+							<EyeIcon height={25} />
+							<span>{LANGUAGE[settings.language].note.preview}</span>
 						</Button>
 					</div>
-					{/* <div ref={pdfRef}>
-						<h1 className="font-bold text-6xl mb-8">{note.title}</h1>
-						<div dangerouslySetInnerHTML={{ __html: note.body }} />
-					</div> */}
 				</Container>
 			</Layout>
 		</>
